@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Untuk Naurah 🤍</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:linear-gradient(#FFF8FC,#FFEAF5);
+
+font-family:Arial,sans-serif;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+padding:20px;
+
+overflow:hidden;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.95);
+
+width:100%;
+
+max-width:760px;
+
+padding:45px;
+
+border-radius:28px;
+
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+text-align:center;
+
+backdrop-filter:blur(5px);
+
+}
+
+h1{
+
+font-size:38px;
+
+color:#FF78AF;
+
+margin-bottom:25px;
+
+}
+
+#typing{
+
+font-size:21px;
+
+line-height:1.9;
+
+min-height:300px;
+
+color:#555;
+
+}
+
+button{
+
+display:none;
+
+margin-top:35px;
+
+padding:16px 40px;
+
+border:none;
+
+border-radius:999px;
+
+background:#FF78AF;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+.sakura{
+
+position:absolute;
+
+font-size:22px;
+
+animation:fall linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-120px);
+
+}
+
+100%{
+
+transform:translateY(110vh);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<span class="sakura" style="left:8%;animation-duration:9s;">🌸</span>
+
+<span class="sakura" style="left:22%;animation-duration:11s;">🌸</span>
+
+<span class="sakura" style="left:37%;animation-duration:8s;">🌸</span>
+
+<span class="sakura" style="left:52%;animation-duration:12s;">🌸</span>
+
+<span class="sakura" style="left:68%;animation-duration:10s;">🌸</span>
+
+<span class="sakura" style="left:83%;animation-duration:9s;">🌸</span>
+
+<div class="card">
+
+<h1>
+
+🐻 Momo
+
+</h1>
+
+<p id="typing"></p>
+
+<button id="nextButton">
+
+🌸 Masuk ke Taman
+
+</button>
+
+</div>
+
+<script>
+
+const texts=[
+
+"...akhirnya kamu datang.",
+
+"Aku sudah menunggumu cukup lama. 🤍",
+
+"Hari ini...",
+
+"Taman kecil yang selama ini kujaga...",
+
+"Akhirnya bisa kubuka untukmu.",
+
+"Semua surat yang dititipkan teman-temanmu...",
+
+"Masih utuh.",
+
+"Dan semuanya sedang menunggumu untuk dibaca.",
+
+"Kalau kamu sudah siap...",
+
+"Ayo kita masuk bersama. 🌸"
+
+];
+
+const typing=document.getElementById("typing");
+
+const button=document.getElementById("nextButton");
+
+let line=0;
+
+let char=0;
+
+function typeText(){
+
+if(line>=texts.length){
+
+button.style.display="inline-block";
+
+return;
+
+}
+
+if(char<texts[line].length){
+
+typing.innerHTML+=texts[line].charAt(char);
+
+char++;
+
+setTimeout(typeText,42);
+
+}
+
+else{
+
+typing.innerHTML+="<br><br>";
+
+line++;
+
+char=0;
+
+setTimeout(typeText,900);
+
+}
+
+}
+
+setTimeout(typeText,1800);
+
+button.onclick=function(){
+
+document.body.style.opacity="0";
+
+setTimeout(function(){
+
+window.location.href="garden.html";
+
+},700);
+
+}
+
+</script>
+
+</body>
+
+</html>
