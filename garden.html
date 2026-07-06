@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Momo's Garden 🌸</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+height:100vh;
+
+overflow:hidden;
+
+font-family:Arial,sans-serif;
+
+background:linear-gradient(#FFE8F4,#FFFDFD);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.sky{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+overflow:hidden;
+
+}
+
+.sakura{
+
+position:absolute;
+
+font-size:24px;
+
+animation:fall linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-100px) rotate(0deg);
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
+
+}
+
+.card{
+
+position:relative;
+
+z-index:2;
+
+background:rgba(255,255,255,.92);
+
+width:90%;
+
+max-width:760px;
+
+padding:45px;
+
+border-radius:28px;
+
+text-align:center;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+backdrop-filter:blur(6px);
+
+}
+
+h1{
+
+color:#FF75AA;
+
+font-size:40px;
+
+margin-bottom:20px;
+
+}
+
+#typing{
+
+font-size:21px;
+
+line-height:1.9;
+
+min-height:230px;
+
+color:#555;
+
+margin-bottom:35px;
+
+}
+
+.gate{
+
+font-size:95px;
+
+margin-bottom:15px;
+
+transition:.8s;
+
+}
+
+.open{
+
+transform:scale(1.12);
+
+}
+
+button{
+
+display:none;
+
+padding:16px 40px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:999px;
+
+background:#FF75AA;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sky">
+
+<span class="sakura" style="left:8%;animation-duration:9s;">🌸</span>
+<span class="sakura" style="left:18%;animation-duration:11s;">🌸</span>
+<span class="sakura" style="left:32%;animation-duration:8s;">🌸</span>
+<span class="sakura" style="left:45%;animation-duration:10s;">🌸</span>
+<span class="sakura" style="left:58%;animation-duration:12s;">🌸</span>
+<span class="sakura" style="left:70%;animation-duration:9s;">🌸</span>
+<span class="sakura" style="left:84%;animation-duration:13s;">🌸</span>
+
+</div>
+
+<div class="card">
+
+<h1>🐻 Momo's Garden</h1>
+
+<div class="gate" id="gate">
+
+🚪
+
+</div>
+
+<p id="typing"></p>
+
+<button id="nextButton">
+
+💌 Lihat Surat
+
+</button>
+
+</div>
+
+<script>
+
+const texts=[
+
+"Selamat datang kembali, Naurah. 🤍",
+
+"Di sinilah aku menjaga semua surat itu.",
+
+"Aku menjaganya setiap hari...",
+
+"Agar ketika hari ini tiba...",
+
+"Kamu bisa membacanya dengan senyum yang sama seperti saat mereka menulisnya.",
+
+"Gerbang taman ini sekarang terbuka untukmu.",
+
+"Silakan masuk... 🌸"
+
+];
+
+const typing=document.getElementById("typing");
+
+const gate=document.getElementById("gate");
+
+const button=document.getElementById("nextButton");
+
+let line=0;
+
+let char=0;
+
+function typeText(){
+
+if(line>=texts.length){
+
+gate.classList.add("open");
+
+gate.innerHTML="🌸🚪🌸";
+
+button.style.display="inline-block";
+
+return;
+
+}
+
+if(char<texts[line].length){
+
+typing.innerHTML+=texts[line].charAt(char);
+
+char++;
+
+setTimeout(typeText,40);
+
+}
+
+else{
+
+typing.innerHTML+="<br><br>";
+
+line++;
+
+char=0;
+
+setTimeout(typeText,900);
+
+}
+
+}
+
+setTimeout(typeText,1200);
+
+button.onclick=function(){
+
+document.body.style.transition=".8s";
+
+document.body.style.opacity="0";
+
+setTimeout(function(){
+
+window.location.href="letters.html";
+
+},800);
+
+}
+
+</script>
+
+</body>
+
+</html>
