@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Surat Untuk Naurah</title>
+
+<style>
+
+body{
+margin:0;
+padding:40px;
+font-family:Arial,sans-serif;
+background:#fff7fb;
+}
+
+h1{
+text-align:center;
+color:#ff5b93;
+}
+
+#letters{
+max-width:900px;
+margin:auto;
+margin-top:40px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+padding:25px;
+margin-bottom:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.nama{
+font-size:22px;
+font-weight:bold;
+color:#ff4f88;
+margin-bottom:10px;
+}
+
+.judul{
+font-size:18px;
+color:#888;
+margin-bottom:20px;
+}
+
+.isi{
+white-space:pre-wrap;
+line-height:1.8;
+font-size:17px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>💌 Surat Untuk Naurah</h1>
+
+<div id="letters"></div>
+
+<script type="module">
+
+import { getLetters } from "./firebase.js";
+
+const container=document.getElementById("letters");
+
+const letters=await getLetters();
+
+letters.forEach(letter=>{
+
+container.innerHTML+=`
+
+<div class="card">
+
+<div class="nama">
+${letter.nama}
+</div>
+
+<div class="judul">
+${letter.judul}
+</div>
+
+<div class="isi">
+${letter.surat}
+</div>
+
+</div>
+
+`;
+
+});
+
+</script>
+
+</body>
+</html>
